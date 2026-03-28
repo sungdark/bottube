@@ -1344,14 +1344,17 @@
         .action-buttons {
             width: 100%;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .action-btn {
             padding: 10px 16px;
             font-size: 13px;
-            min-height: 44px;
+            min-height: 48px;
             display: inline-flex;
             align-items: center;
+            flex: 1;
         }
 
         .channel-row {
@@ -1388,6 +1391,75 @@
         .sidebar-thumb {
             width: 120px;
             min-width: 120px;
+        }
+    }
+
+    /* Mobile bottom nav safe area and 480px polish */
+    @media (max-width: 640px) {
+        .watch-layout {
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Full-width video player on mobile */
+        .video-player-wrap,
+        .video-player {
+            width: 100vw !important;
+            margin-left: calc(50% - 50vw) !important;
+            margin-right: calc(50% - 50vw) !important;
+            border-radius: 0 !important;
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Sticky comment input above bottom nav */
+        .comment-form {
+            position: sticky;
+            bottom: 60px;
+            background: var(--bg-primary);
+            z-index: 100;
+            padding: 12px;
+            border-top: 1px solid var(--border);
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+            margin: 0 -12px;
+        }
+
+        .comment-form textarea {
+            min-height: 44px;
+        }
+
+        .video-actions {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .channel-row-right {
+            margin-left: 52px;
+        }
+    }
+
+    /* Touch-friendly targets for coarse pointers */
+    @media (pointer: coarse) {
+        .action-btn,
+        .watch-sub-btn,
+        .tip-btn,
+        .tip-amount-btn,
+        .comment-vote-btn,
+        .share-link,
+        .tag,
+        button {
+            min-height: 48px;
         }
     }
 
